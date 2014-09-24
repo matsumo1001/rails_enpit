@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.1.2
+deploy:
+  provider: heroku
+  api_key:
+    secure: ex+ATmzrnEQSwu7Mlk3Clwyvh0Lkvj3WWdH2vmmk+piY1lDwfRnDm8SwHmP6JkcVAn7CyIqN3AJmpJRXs/WJVCrWPizflptqkDsOSNFH45pf5lyYLDw0SQxxsUUIIGOVsqyQ7yc2bOBfB7JEGnVUCSz7Qqog/EEtbtJjjL4329M=
+  app: sheltered-citadel-8993
+  on:
+    repo: matsumo1001/rails_enpit
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
